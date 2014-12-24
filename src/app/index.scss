@@ -1,0 +1,37 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans Condensed';
+}
+p, div {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+.jumbotron {
+  h1 {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+  }
+  background-image: url('https://fortwoplz.files.wordpress.com/2014/09/duck-bao.jpg');
+  background-size: cover;
+}
+
+.footer {
+  font-size: 0.9em;
+}
+// injector
+// endinjector

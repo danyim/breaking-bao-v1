@@ -1,0 +1,27 @@
+<div class="container">
+
+  <div ng-include="'components/navbar/navbar.html'"></div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div ng-repeat="post in posts.$object.slice().reverse()">
+        <h2>{{post.title}}</h2>
+        <p>
+          <div ng-bind-html="post.content"></div>
+        </p>
+        <em>Posted by {{post.author.username}} on {{post.date | date}}</em>
+      </div>
+    </div>
+  </div>
+
+<!--   <hr />
+  <div class="row">
+    <h2>Debug info</h2>
+    <pre>{{posts | json}}</pre>
+  </div> -->
+
+  <div class="footer">
+    <p class="text-right">&copy; 2015 danyim</p>
+  </div>
+
+</div>
