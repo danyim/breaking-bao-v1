@@ -1,5 +1,7 @@
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Open Sans Condensed';
+    font-weight: 700;
+    letter-spacing: -0.05em;
 }
 p, div {
     font-family: Helvetica, Arial, sans-serif;
@@ -19,6 +21,8 @@ p, div {
     width: 50px;
   }
 }
+
+.angular-google-map-container { height: 400px; }
 
 .jumbotron {
   h1 {

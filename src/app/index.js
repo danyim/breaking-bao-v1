@@ -5,12 +5,19 @@ import MainCtrl from './main/main.controller';
 import NavbarCtrl from '../components/navbar/navbar.controller';
 // import WordpressAPISvc from './services/wordpressAPI.service';
 
-var app = angular.module('ngBao', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ui.bootstrap'])
+var app = angular.module('ngBao', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ui.bootstrap', 'uiGmapgoogle-maps'])
   .controller('MainCtrl', MainCtrl)
   .controller('NavbarCtrl', NavbarCtrl)
 
   .config(function(RestangularProvider) {
     RestangularProvider.setBaseUrl('http://www.nubs.org/bao/wp-json');
+  })
+  .config(function(uiGmapGoogleMapApiProvider) {
+      uiGmapGoogleMapApiProvider.configure({
+          // key: 'AIzaSyDCm38sMKet1hIkDAx5eGLMMoTweZAy3Bk',
+          v: '3.17',
+          libraries: 'weather,geometry,visualization'
+      });
   })
 
   .config(function ($stateProvider, $urlRouterProvider) {
