@@ -51,35 +51,17 @@ gulp.task('injector:css', ['styles'], function () {
 gulp.task('scripts', function () {
   return gulp.src('src/{app,components}/**/*.js')
     .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'))
-    .pipe($.traceur())
-    .on('error', function handleError(err) {
-      console.error(err.toString());
-      this.emit('end');
-    })
-    .pipe(gulp.dest('.tmp/traceur'))
-    .pipe($.size());
+    .pipe($.jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('browserify', ['scripts'], function () {
-  return gulp.src('.tmp/traceur/app/index.js', { read: false })
-    .pipe($.browserify())
-    .on('error', function handleError(err) {
-      console.error(err.toString());
-      this.emit('end');
-    })
-    .pipe(gulp.dest('.tmp/app'))
-    .pipe($.size());
-});
-
-gulp.task('injector:js', ['browserify', 'injector:css'], function () {
+gulp.task('injector:js', ['scripts', 'injector:css'], function () {
   return gulp.src(['src/index.html', '.tmp/index.html'])
     .pipe($.inject(gulp.src([
-      '.tmp/{app,components}/**/*.js',
+      'src/{app,components}/**/*.js',
       '!src/{app,components}/**/*.spec.js',
       '!src/{app,components}/**/*.mock.js'
-    ]), {
-      ignorePath: '.tmp',
+    ]).pipe($.angularFilesort()), {
+      ignorePath: 'src',
       addRootSlash: false
     }))
     .pipe(gulp.dest('src/'));

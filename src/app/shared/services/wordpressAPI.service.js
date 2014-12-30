@@ -1,16 +1,10 @@
 'use strict';
-/*jshint esnext: true */
 
-class WordpressAPISvc {
-  constructor (Restangular) {
+angular.module('ngBao')
+  .service('WordpressAPISvc', function (Restangular) {
 
-  }
-
-  getPosts() {
-    return Restangular.all('posts').getList();
-  }
-}
-
-WordpressAPISvc.$inject = ['Restangular'];
-
-export default WordpressAPISvc;
+    // Totally gonna break
+    var getPosts = function() {
+      return Restangular.all('posts').getList();
+    };
+  });

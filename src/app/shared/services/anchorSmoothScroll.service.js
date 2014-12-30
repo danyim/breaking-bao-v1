@@ -1,9 +1,7 @@
 'use strict';
-/*jshint esnext: true */
 
-// Inspiration from: http://jsfiddle.net/brettdewoody/y65G5/
-class AnchorSmoothScrollSvc {
-  constructor () {
+angular.module('ngBao')
+  .service('AnchorSmoothScrollSvc', function (Restangular) {
     this.scrollTo = function(eID) {
 
         // This scrolling function
@@ -51,11 +49,5 @@ class AnchorSmoothScrollSvc {
                 y += node.offsetTop;
             } return y;
         }
-
     };
-  }
-}
-
-AnchorSmoothScrollSvc.$inject = [];
-
-export default AnchorSmoothScrollSvc;
+  });

@@ -22,7 +22,7 @@
       ],
       "jQuery": {
         "name": "jquery",
-        "version": "~2.1.1"
+        "version": "~1.11.1"
       },
       "resource": {
         "name": "restangular",
@@ -53,11 +53,11 @@
         "version": "~1.1.0"
       },
       "jsPreprocessor": {
-        "key": "traceur",
+        "key": "none",
         "extension": "js",
-        "srcExtension": "es6",
-        "module": "gulp-traceur",
-        "version": "~0.14.1"
+        "srcExtension": "js",
+        "module": null,
+        "version": null
       },
       "htmlPreprocessors": [],
       "foundationComponents": {
