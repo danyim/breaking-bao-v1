@@ -14,5 +14,3 @@ class WordpressAPISvc {
 WordpressAPISvc.$inject = ['Restangular'];
 
 export default WordpressAPISvc;
-
-angular.module('ngBao', []).factory('wordpressAPISvc', WordpressAPISvc);

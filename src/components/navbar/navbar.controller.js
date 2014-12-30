@@ -2,11 +2,13 @@
 /*jshint esnext: true */
 
 class NavbarCtrl {
-  constructor ($scope) {
-    $scope.date = new Date();
+  constructor ($scope, $location, AnchorSmoothScrollSvc) {
+    $scope.gotoElement = function (e) {
+      AnchorSmoothScrollSvc.scrollTo(e);
+    };
   }
 }
 
-NavbarCtrl.$inject = ['$scope'];
+NavbarCtrl.$inject = ['$scope', '$location', 'AnchorSmoothScrollSvc'];
 
 export default NavbarCtrl;
