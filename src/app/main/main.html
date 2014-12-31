@@ -5,6 +5,7 @@
   <header>
     <div class="container">
       <div class="intro-text">
+        <!-- div ng-bind-html="page.title.$object.content"></div -->
         <div class="intro-lead-in">It's time to eat.</div>
         <div class="intro-heading">It's Time To Break Bao</div>
         <a href="" ng-click="gotoElement('menu')" class="page-scroll btn btn-xl">Feed Me</a>
@@ -17,12 +18,12 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading">Locations</h2>
-          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+          <h2 class="section-heading" ng-bind-html="page.locations.$object.title"></h2>
+          <h3 class="section-subheading text-muted" ng-bind-html="page.locations.$object.content"></h3>
         </div>
       </div>
       <div class="row text-center">
-        <div class="col-md-4">
+        <div class="col-md-8">
           <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
         </div>
         <div class="col-md-4">
@@ -32,8 +33,6 @@
           </span>
           <h4 class="service-heading">Menil Collection</h4>
           <p class="text-muted">1533 Sul Ross Street, Houston, TX 77006</p>
-        </div>
-        <div class="col-md-4">
           <span class="fa-stack fa-4x">
             <i class="fa fa-circle fa-stack-2x text-primary"></i>
             <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
@@ -49,15 +48,18 @@
               <div ng-bind-html="post.content"></div>
             </p>
             <em>Posted by {{post.author.username}} on {{post.date | date}}</em>
-
-            <hr />
-            <div class="row">
-              <h2>Debug info</h2>
-              <pre>{{posts | json}}</pre>
-            </div>
           </div>
         </div> -->
       </div>
+      <!-- <div class="row text-left">
+        <div class="col-md-12">
+          <hr />
+          <div class="row">
+            <h2>Debug info</h2>
+            <pre>{{page.menu | json}}</pre>
+          </div>
+        </div>
+      </div> -->
     </div>
   </section>
 
@@ -66,97 +68,26 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading">Menu</h2>
-          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+          <h2 class="section-heading" ng-bind-html="page.menu.$object.title"></h2>
+          <h3 class="section-subheading text-muted" ng-bind-html="page.menu.$object.content"></h3>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4 col-sm-6 portfolio-item">
-          <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+        <div class="col-md-4 col-sm-6 portfolio-item" ng-repeat="item in menuItems">
+          <a href="#portfolioModal{{$index}}" class="portfolio-link" data-toggle="modal">
             <div class="portfolio-hover">
               <div class="portfolio-hover-content">
                 <i class="fa fa-plus fa-3x"></i>
               </div>
             </div>
-            <img src="assets/images/portfolio/roundicons.png" class="img-responsive" alt="">
+            <img ng-src="{{item.featured_image.guid}}" class="img-responsive" alt="">
           </a>
           <div class="portfolio-caption">
-            <h4>Pork Belly Bao - $5</h4>
-            <p class="text-muted">Lorem ipsum dolor sit amet consectetur</p>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6 portfolio-item">
-          <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-            <div class="portfolio-hover">
-              <div class="portfolio-hover-content">
-                <i class="fa fa-plus fa-3x"></i>
-              </div>
-            </div>
-            <img src="assets/images/portfolio/startup-framework.png" class="img-responsive" alt="">
-          </a>
-          <div class="portfolio-caption">
-            <h4>Fried Chicken Bao - $4</h4>
-            <p class="text-muted">Lorem ipsum dolor sit amet consectetur</p>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6 portfolio-item">
-          <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-            <div class="portfolio-hover">
-              <div class="portfolio-hover-content">
-                <i class="fa fa-plus fa-3x"></i>
-              </div>
-            </div>
-            <img src="assets/images/portfolio/treehouse.png" class="img-responsive" alt="">
-          </a>
-          <div class="portfolio-caption">
-            <h4>Veggie Bao - $4</h4>
-            <p class="text-muted">Lorem ipsum dolor sit amet consectetur</p>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6 portfolio-item">
-          <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
-            <div class="portfolio-hover">
-              <div class="portfolio-hover-content">
-                <i class="fa fa-plus fa-3x"></i>
-              </div>
-            </div>
-            <img src="assets/images/portfolio/golden.png" class="img-responsive" alt="">
-          </a>
-          <div class="portfolio-caption">
-            <h4>BBQ Bao - $5</h4>
-            <p class="text-muted">Lorem ipsum dolor sit amet consectetur</p>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6 portfolio-item">
-          <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-            <div class="portfolio-hover">
-              <div class="portfolio-hover-content">
-                <i class="fa fa-plus fa-3x"></i>
-              </div>
-            </div>
-            <img src="assets/images/portfolio/escape.png" class="img-responsive" alt="">
-          </a>
-          <div class="portfolio-caption">
-            <h4>Just Bao - $2</h4>
-            <p class="text-muted">Lorem ipsum dolor sit amet consectetur</p>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6 portfolio-item">
-          <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-            <div class="portfolio-hover">
-              <div class="portfolio-hover-content">
-                <i class="fa fa-plus fa-3x"></i>
-              </div>
-            </div>
-            <img src="assets/images/portfolio/dreams.png" class="img-responsive" alt="">
-          </a>
-          <div class="portfolio-caption">
-            <h4>Spicy Bao - $5</h4>
-            <p class="text-muted">Lorem ipsum dolor sit amet consectetur</p>
+            <h4 ng-bind-html="item.title"></h4>
+            <p class="text-muted" ng-bind-html="item.excerpt"></p>
           </div>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- About Section -->
@@ -164,8 +95,8 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading">About</h2>
-          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+          <h2 class="section-heading" ng-bind-html="page.about.$object.title"></h2>
+          <h3 class="section-subheading text-muted" ng-bind-html="page.about.$object.content"></h3>
         </div>
       </div>
       <div class="row">
@@ -245,61 +176,16 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading">Our Amazing Team</h2>
-          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+          <h2 class="section-heading" ng-bind-html="page.team.$object.title"></h2>
+          <h3 class="section-subheading text-muted" ng-bind-html="page.team.$object.content"></h3>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-3" ng-repeat="member in teamMembers | orderBy:id">
           <div class="team-member">
-            <img src="assets/images/team/1.jpg" class="img-responsive img-circle" alt="">
-            <h4>Phil Kim</h4>
-            <p class="text-muted">Executive Chef</p>
-            <ul class="list-inline social-buttons">
-              <li><a href="#"><i class="fa fa-twitter"></i></a>
-              </li>
-              <li><a href="#"><i class="fa fa-facebook"></i></a>
-              </li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="team-member">
-            <img src="assets/images/team/2.jpg" class="img-responsive img-circle" alt="">
-            <h4>Hyun Choi</h4>
-            <p class="text-muted">Dish Boy</p>
-            <ul class="list-inline social-buttons">
-              <li><a href="#"><i class="fa fa-twitter"></i></a>
-              </li>
-              <li><a href="#"><i class="fa fa-facebook"></i></a>
-              </li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="team-member">
-            <img src="assets/images/team/3.jpg" class="img-responsive img-circle" alt="">
-            <h4>Daniel Yim</h4>
-            <p class="text-muted">Web Developer</p>
-            <ul class="list-inline social-buttons">
-              <li><a href="#"><i class="fa fa-twitter"></i></a>
-              </li>
-              <li><a href="#"><i class="fa fa-facebook"></i></a>
-              </li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="team-member">
-            <img src="assets/images/team/4.jpg" class="img-responsive img-circle" alt="">
-            <h4>John Chong</h4>
-            <p class="text-muted">Pretentious Food Critic</p>
+            <img ng-src="{{member.featured_image.guid}}" class="img-responsive img-circle" alt="">
+            <h4 ng-bind-html="member.title"></h4>
+            <p class="text-muted" ng-bind-html="member.content"></p>
             <ul class="list-inline social-buttons">
               <li><a href="#"><i class="fa fa-twitter"></i></a>
               </li>
@@ -422,8 +308,8 @@
   <!-- Portfolio Modals -->
   <!-- Use the modals below to showcase details about your portfolio projects! -->
 
-  <!-- Portfolio Modal 1 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Portfolio Modal template -->
+  <div class="portfolio-modal modal fade" id="portfolioModal{{$index}}" tabindex="-1" role="dialog" aria-hidden="true" ng-repeat="item in menuItems">
     <div class="modal-content">
       <div class="close-modal" data-dismiss="modal">
         <div class="lr">
@@ -436,145 +322,12 @@
           <div class="col-lg-8 col-lg-offset-2">
             <div class="modal-body">
               <!-- Project Details Go Here -->
-              <h2>Project Name</h2>
-              <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-              <img class="img-responsive" src="assets/images/portfolio/roundicons-free.png" alt="">
-              <p>Pig tail ipsum cillum. Dolor tri-tip aute shankle dolore dolore. Rump biltong jerky non ut ullamco prosciutto, dolore nulla picanha do ham hock pastrami. Ex ea ad dolor, nulla cillum culpa beef ribs minim. Fatback pork belly andouille exercitation alcatra frankfurter beef.</p>
-              <ul class="list-inline">
-                <li>Date: July 2014</li>
-                <li>Client: Round Icons</li>
-                <li>Category: Graphic Design</li>
-              </ul>
-              <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 2 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-      <div class="close-modal" data-dismiss="modal">
-        <div class="lr">
-          <div class="rl">
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-lg-offset-2">
-            <div class="modal-body">
-              <h2>Project Heading</h2>
-              <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-              <img class="img-responsive img-centered" src="assets/images/portfolio/startup-framework-preview.png" alt="">
-              <p>Tail ex ball tip, enim doner aliqua landjaeger do ipsum excepteur. Enim spare ribs t-bone, ea culpa pork loin qui excepteur magna. Duis ex ham boudin, officia occaecat shoulder pariatur. Fatback pork chop jowl cupim, ex short loin qui t-bone lorem corned beef ham hock.</p>
-              <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 3 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-      <div class="close-modal" data-dismiss="modal">
-        <div class="lr">
-          <div class="rl">
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-lg-offset-2">
-            <div class="modal-body">
-              <!-- Project Details Go Here -->
-              <h2>Project Name</h2>
-              <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-              <img class="img-responsive img-centered" src="assets/images/portfolio/treehouse-preview.png" alt="">
-              <p>Officia biltong duis dolore in alcatra. Meatloaf pork dolor exercitation. Venison do sint, chicken aute pastrami sunt velit shoulder t-bone culpa landjaeger shankle cupidatat labore. Mollit tail sed, elit bacon ea eiusmod fugiat culpa velit pork chop doner flank. Reprehenderit chuck in adipisicing cow. Beef ribs sint pork chop cillum tri-tip swine incididunt, mollit dolore chicken. Venison landjaeger quis elit pork chop pork loin porchetta esse qui beef tail pancetta rump non.</p>
-              <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 4 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-      <div class="close-modal" data-dismiss="modal">
-        <div class="lr">
-          <div class="rl">
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-lg-offset-2">
-            <div class="modal-body">
-              <!-- Project Details Go Here -->
-              <h2>Project Name</h2>
-              <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-              <img class="img-responsive img-centered" src="assets/images/portfolio/golden-preview.png" alt="">
-              <p>Bacon ipsum dolor amet ut short ribs irure, venison biltong eiusmod pork belly ex swine sausage tail reprehenderit porchetta. Turducken laborum sed nulla veniam sausage kevin flank picanha tri-tip alcatra irure minim id elit. Sausage in mollit proident. Bresaola officia chuck esse, corned beef reprehenderit sausage meatball dolore ut consectetur. Magna mollit fatback duis, filet mignon est meatloaf alcatra velit deserunt aute doner capicola tail. Strip steak short loin andouille tempor ullamco. Adipisicing in bacon velit non ribeye proident pig occaecat cupim.</p>
-              <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 5 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-      <div class="close-modal" data-dismiss="modal">
-        <div class="lr">
-          <div class="rl">
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-lg-offset-2">
-            <div class="modal-body">
-              <!-- Project Details Go Here -->
-              <h2>Project Name</h2>
-              <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-              <img class="img-responsive img-centered" src="assets/images/portfolio/escape-preview.png" alt="">
-              <p>Meatloaf ut eiusmod, prosciutto porchetta kevin nostrud sirloin sed dolore tongue bresaola. Do irure rump nostrud, nulla meatloaf pastrami doner shankle non ham hock id quis.</p>
-              <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 6 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-      <div class="close-modal" data-dismiss="modal">
-        <div class="lr">
-          <div class="rl">
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-lg-offset-2">
-            <div class="modal-body">
-              <!-- Project Details Go Here -->
-              <h2>Project Name</h2>
-              <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-              <img class="img-responsive img-centered" src="assets/images/portfolio/dreams-preview.png" alt="">
-              <p>Excepteur corned beef chicken doner enim occaecat aliqua spare ribs sunt landjaeger quis labore ham non id. Fugiat ribeye veniam bacon, cillum quis qui. Veniam tenderloin enim lorem, brisket ham hock pork esse.</p>
-              <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+              <h2 ng-bind-html="item.title"></h2>
+              <p class="text-center">
+                <img ng-src="{{item.featured_image.guid}}" class="img-responsive" alt="">
+              </p>
+              <p ng-bind-html="item.content"></p>
+              <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
             </div>
           </div>
         </div>
