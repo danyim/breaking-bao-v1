@@ -38,4 +38,5 @@ Certain sections of the site are controlled by a Wordpress page
 
 ## Useful Links
 - [Filters available to the WP JSON API plugin](http://wp-api.org/#posts_retrieve-posts)
+- [Understanding Angular Directives](https://github.com/angular/angular.js/wiki/Understanding-Directives)
 
