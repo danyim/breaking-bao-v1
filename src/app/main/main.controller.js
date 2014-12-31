@@ -2,26 +2,55 @@
 
 angular.module('ngBao')
   .controller('MainCtrl', function ($scope, Restangular, uiGmapGoogleMapApi, AnchorSmoothScrollSvc, WordpressAPISvc) {
-    // $scope.posts = Restangular.all('posts').getList();
-    $scope.posts = WordpressAPISvc.getPosts();
-    $scope.post = WordpressAPISvc.getPosts(1);
-
-    $scope.menuItems = WordpressAPISvc.getMenuItems().$object;
-    $scope.teamMembers = WordpressAPISvc.getTeamMembers().$object;
-
-    $scope.pages = WordpressAPISvc.getPages();
     $scope.page = {
-      menu: WordpressAPISvc.getPages(WordpressAPISvc.wpPageIdEnum.menu),
-      team: WordpressAPISvc.getPages(WordpressAPISvc.wpPageIdEnum.team),
-      locations: WordpressAPISvc.getPages(WordpressAPISvc.wpPageIdEnum.locations),
-      about: WordpressAPISvc.getPages(WordpressAPISvc.wpPageIdEnum.about),
-      title: WordpressAPISvc.getPages(WordpressAPISvc.wpPageIdEnum.title)
+      menu: null,
+      team: null,
+      locations: null,
+      about: null,
+      title: null
     };
 
-    console.log($scope.pages.$object);
     // "Agency" Template taken from:
     // http://ironsummitmedia.github.io/startbootstrap-agency/
 
+    WordpressAPISvc.getMenuItems().then(function(menuItems) {
+      $scope.menuItems = menuItems;
+    });
+    WordpressAPISvc.getTeamMembers().then(function(teamMembers) {
+      $scope.teamMembers = teamMembers;
+    });
+
+    WordpressAPISvc.getPages().then(function(pages) {
+      for(var i = 0; i < pages.length; i++) {
+        // console.log(pages[i]);
+        pages[i].content = $scope.removeParagraphTags(pages[i].content);
+
+        switch(pages[i].ID) {
+          case WordpressAPISvc.wpPageIdEnum.title:
+            $scope.page.title = pages[i];
+            break;
+          case WordpressAPISvc.wpPageIdEnum.about:
+            $scope.page.about = pages[i];
+            break;
+          case WordpressAPISvc.wpPageIdEnum.locations:
+            $scope.page.locations = pages[i];
+            break;
+          case WordpressAPISvc.wpPageIdEnum.team:
+            $scope.page.team = pages[i];
+            break;
+          case WordpressAPISvc.wpPageIdEnum.menu:
+            $scope.page.menu = pages[i];
+            break;
+        }
+      }
+    });
+
+    // Wordpress' post content comes wrapped in a <p> tag by default. This
+    // breaks some of the styling (<p> inside <h3> is a smaller font size).
+    // This function will remove the start and closing <p> tag from a string.
+    $scope.removeParagraphTags = function(str) {
+      return str.replace(/^<p>/g, "").replace(/<\/p>(\n)?$/g, "");
+    }
 
     // Good example: https://github.com/angular-ui/angular-google-maps/blob/master/example/assets/scripts/controllers/example.js
     uiGmapGoogleMapApi.then(function(maps) {
