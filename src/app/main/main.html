@@ -24,7 +24,10 @@
       </div>
       <div class="row text-center">
         <div class="col-md-8">
-          <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+          <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options">
+            <ui-gmap-marker idKey="markerUH.id" coords="markerUH.coords" options="markerUH.options"></ui-gmap-marker>
+            <ui-gmap-marker idKey="markerMenil.id" coords="markerMenil.coords" options="markerMenil.options"></ui-gmap-marker>
+          </ui-gmap-google-map>
         </div>
         <div class="col-md-4">
           <span class="fa-stack fa-4x">
@@ -72,8 +75,8 @@
           <h3 class="section-subheading text-muted" ng-bind-html="page.menu.content"></h3>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-4 col-sm-6 portfolio-item" ng-repeat="item in menuItems">
+      <div ng-class="{ row: ($index % 3)==2 }" ng-repeat="item in menuItems">
+        <div class="col-md-4 col-sm-6 portfolio-item">
           <a href="#portfolioModal{{$index}}" class="portfolio-link" data-toggle="modal">
             <div class="portfolio-hover">
               <div class="portfolio-hover-content">
@@ -298,9 +301,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- Portfolio Modals -->
-  <!-- Use the modals below to showcase details about your portfolio projects! -->
 
   <!-- Portfolio Modal template -->
   <div class="portfolio-modal modal fade" id="portfolioModal{{$index}}" tabindex="-1" role="dialog" aria-hidden="true" ng-repeat="item in menuItems">

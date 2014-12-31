@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngBao')
-  .service('AnchorSmoothScrollSvc', function (Restangular) {
+  .service('AnchorSmoothScrollSvc', function () {
     this.scrollTo = function(eID) {
 
         // This scrolling function

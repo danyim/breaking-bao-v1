@@ -32,6 +32,10 @@ Certain sections of the site are controlled by a Wordpress page
     - Feature Image: Photo of team member
     - Category: **Post must be categorized under "Team Member"**
 
+## Image Specs
+- **Team Photos**: 225x225px
+- **Menu Photos**: 400x289px (small), 565x767px (large)
+
 ## Useful Links
 - [Filters available to the WP JSON API plugin](http://wp-api.org/#posts_retrieve-posts)
 
