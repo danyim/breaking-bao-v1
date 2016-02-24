@@ -6,9 +6,10 @@
     <div class="container">
       <div class="intro-text">
         <!-- <div ng-bind-html="page.title.content"></div> -->
+        <img class="intro-logo" src="assets/images/logos/4.png" />
         <div class="intro-lead-in">It's time to eat.</div>
         <div class="intro-heading">It's Time To Break Bao</div>
-        <a href="" ng-click="gotoElement('menu')" class="page-scroll btn btn-xl">Feed Me</a>
+        <a href="" ng-click="vm.gotoElement('menu')" class="page-scroll btn btn-xl">Feed Me</a>
       </div>
     </div>
   </header>
@@ -18,15 +19,15 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading" ng-bind-html="page.locations.title"></h2>
-          <h3 class="section-subheading text-muted" ng-bind-html="page.locations.content"></h3>
+          <h2 class="section-heading" ng-bind-html="vm.page['locations'].title"></h2>
+          <h3 class="section-subheading text-muted" ng-bind-html="vm.page['locations'].content"></h3>
         </div>
       </div>
       <div class="row text-center">
         <div class="col-md-8">
-          <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options">
-            <ui-gmap-marker idKey="markerUH.id" coords="markerUH.coords" options="markerUH.options"></ui-gmap-marker>
-            <ui-gmap-marker idKey="markerMenil.id" coords="markerMenil.coords" options="markerMenil.options"></ui-gmap-marker>
+          <ui-gmap-google-map center="vm.map.center" zoom="vm.map.zoom" options="vm.map.options">
+            <ui-gmap-marker idKey="vm.marker['UH'].id" coords="vm.marker['UH'].coords" options="vm.marker['UH'].options"></ui-gmap-marker>
+            <ui-gmap-marker idKey="vm.marker['Menil'].id" coords="vm.marker['Menil'].coords" options="vm.marker['Menil'].options"></ui-gmap-marker>
           </ui-gmap-google-map>
         </div>
         <div class="col-md-4">
@@ -45,7 +46,7 @@
         </div>
 
         <!-- <div class="col-md-4 text-left">
-          <div ng-repeat="post in posts.$object">
+          <div ng-repeat="post in vm.posts.$object">
             <h2>{{post.title}}</h2>
             <p>
               <div ng-bind-html="post.content"></div>
@@ -71,11 +72,11 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading" ng-bind-html="page.menu.title"></h2>
-          <h3 class="section-subheading text-muted" ng-bind-html="page.menu.content"></h3>
+          <h2 class="section-heading" ng-bind-html="vm.page['menu'].title"></h2>
+          <h3 class="section-subheading text-muted" ng-bind-html="vm.page['menu'].content"></h3>
         </div>
       </div>
-      <div ng-class="{ row: ($index % 3)==2 }" ng-repeat="item in menuItems">
+      <div ng-class="{ row: ($index % 3)==2 }" ng-repeat="item in vm.menuItems">
         <div class="col-md-4 col-sm-6 portfolio-item">
           <a href="#portfolioModal{{$index}}" class="portfolio-link" data-toggle="modal">
             <div class="portfolio-hover">
@@ -98,8 +99,8 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading" ng-bind-html="page.about.title"></h2>
-          <h3 class="section-subheading text-muted" ng-bind-html="page.about.content"></h3>
+          <h2 class="section-heading" ng-bind-html="vm.page['about'].title"></h2>
+          <h3 class="section-subheading text-muted" ng-bind-html="vm.page['about'].content"></h3>
         </div>
       </div>
       <div class="row">
@@ -179,12 +180,12 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading" ng-bind-html="page.team.title"></h2>
-          <h3 class="section-subheading text-muted" ng-bind-html="page.team.content"></h3>
+          <h2 class="section-heading" ng-bind-html="vm.page['team'].title"></h2>
+          <h3 class="section-subheading text-muted" ng-bind-html="vm.page['team'].content"></h3>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-3" ng-repeat="member in teamMembers | orderBy:'ID'">
+        <div class="col-sm-3" ng-repeat="member in vm.teamMembers | orderBy:'ID'">
           <div class="team-member">
             <img ng-src="{{member.featured_image.guid}}" class="img-responsive img-circle" alt="">
             <h4 ng-bind-html="member.title"></h4>
@@ -281,7 +282,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <span class="copyright">&copy; Breaking Bao 2015</span>
+          <span class="copyright">&copy; 2016 &middot; Breaking Bao</span>
         </div>
         <div class="col-md-4">
           <ul class="list-inline social-buttons">
@@ -292,7 +293,7 @@
         </div>
         <div class="col-md-4">
           <ul class="list-inline quicklinks">
-            <li><a href="#">Privacy Policy</a>
+            <li><a href="#"></a>
             </li>
             <!-- <li><a href="#">Terms of Use</a>
             </li> -->
@@ -303,7 +304,7 @@
   </footer>
 
   <!-- Portfolio Modal template -->
-  <div class="portfolio-modal modal fade" id="portfolioModal{{$index}}" tabindex="-1" role="dialog" aria-hidden="true" ng-repeat="item in menuItems">
+  <div class="portfolio-modal modal fade" id="portfolioModal{{$index}}" tabindex="-1" role="dialog" aria-hidden="true" ng-repeat="item in vm.menuItems">
     <div class="modal-content">
       <div class="close-modal" data-dismiss="modal">
         <div class="lr">
@@ -328,5 +329,4 @@
       </div>
     </div>
   </div>
-
 </div>

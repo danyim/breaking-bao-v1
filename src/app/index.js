@@ -2,7 +2,7 @@
 
 angular.module('ngBao', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ui.bootstrap', 'uiGmapgoogle-maps'])
   .config(function(RestangularProvider) {
-    RestangularProvider.setBaseUrl('http://www.nubs.org/bao/wp-json');
+    RestangularProvider.setBaseUrl('http://wp.breakingbao.com/wp-json'); // ELB DNS address
   })
   .config(function(uiGmapGoogleMapApiProvider) {
       uiGmapGoogleMapApiProvider.configure({
@@ -16,7 +16,8 @@ angular.module('ngBao', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'res
       .state('home', {
         url: '/',
         templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        controllerAs: 'vm'
       });
 
     $urlRouterProvider.otherwise('/');

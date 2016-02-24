@@ -1,4 +1,5 @@
 
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -185,16 +186,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 header {
-  background-image: url('../assets/images/header-bg.jpg');
+  background-color: $header-bg;
   background-repeat: none;
   background-attachment: scroll;
   background-position: center center;
   @include background-cover;
   text-align: center;
-  color: white;
+  color: #000;
   .intro-text {
     padding-top: 100px;
     padding-bottom: 50px;
+    .intro-logo {
+       width: 350px;
+       padding-bottom: 50px;
+    }
     .intro-lead-in {
       @include serif-font;
       font-style: italic;
@@ -215,7 +220,7 @@ header {
 @media(min-width:768px) {
   header {
     .intro-text {
-      padding-top: 300px;
+      padding-top: 100px; // 300px
       padding-bottom: 200px;
       .intro-lead-in {
         @include serif-font;
