@@ -1,5 +1,8 @@
 # Breaking Bao
 
+## Deployment
+- After configuring the AWS CLI, run `publish.sh` to upload to the `breakingbao.com` S3 bucket
+
 ## Technologies
 - Scaffolded using Yeoman's generator-gulp-angular with the following options:
     - Angular 1.2 w/ Restangular and UI Router
